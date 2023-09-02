@@ -1,0 +1,48 @@
+@media screen and (min-width: 340px) and (max-width: 480px) {
+  body {
+    flex-wrap: wrap;
+
+    background-size: 110vw 150vh;
+    background-repeat: no-repeat;
+  }
+  #snake-logo {
+    height: 24vh;
+    width: 41vw;
+    position: absolute;
+    top: 0vh;
+    left: 34vw;
+    background: none;
+  }
+  .main-container {
+    left: 2rem;
+  }
+
+  .score-board {
+    height: 18vh;
+    width: 72vw;
+    position: absolute;
+    top: 18vh;
+    left: 21vw;
+  }
+  h2 {
+    font-size: 23px;
+  }
+  #scoreBox {
+    margin-bottom: 0px;
+    font-size: 24px;
+  }
+  #high-score {
+    font-size: 24px;
+  }
+  #board {
+    height: 73vh;
+    width: 80vw;
+    margin-top: 37vh;
+  }
+  .food {
+    border-radius: 50%;
+  }
+  .main-container {
+    margin-right: 4vw;
+  }
+}
