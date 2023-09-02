@@ -138,3 +138,38 @@ window.addEventListener("keydown", (e) => {
       break;
   }
 });
+// Function to handle touch move events
+function handleTouchMove(event) {
+  const touchX = event.touches[0].clientX;
+  const touchY = event.touches[0].clientY;
+
+  const deltaX = touchX - snakeArr[0].x * gridSize; // gridSize is the size of each grid cell
+  const deltaY = touchY - snakeArr[0].y * gridSize;
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    // Horizontal swipe
+    if (deltaX > 0) {
+      // Swipe right
+      inputDir.x = 1;
+      inputDir.y = 0;
+    } else {
+      // Swipe left
+      inputDir.x = -1;
+      inputDir.y = 0;
+    }
+  } else {
+    // Vertical swipe
+    if (deltaY > 0) {
+      // Swipe down
+      inputDir.x = 0;
+      inputDir.y = 1;
+    } else {
+      // Swipe up
+      inputDir.x = 0;
+      inputDir.y = -1;
+    }
+  }
+}
+
+// Add touch move event listener
+window.addEventListener("touchmove", handleTouchMove);
