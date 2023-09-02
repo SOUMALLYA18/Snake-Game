@@ -2,7 +2,7 @@ const foodSound = new Audio("music/food.mp3");
 const gameOverSound = new Audio("music/gameover.mp3");
 const moveSound = new Audio("music/move.mp3");
 const musicSound = new Audio("music/bg-music.mp3");
-let speed = 5;
+let speed = 4;
 let lastPaintTime = 0;
 let snakeArr = [{ x: 13, y: 15 }];
 let food = { x: 6, y: 7 };
@@ -48,17 +48,9 @@ function gameEngine() {
     musicSound.pause();
     inputDir = { x: 0, y: 0 };
     alert("Game Over. Press any key to play again!");
-
-    if (score > highScore) {
-      highScore = score;
-      localStorage.setItem("highScore", highScore);
-      highScoreElement.innerText = "High Score: " + highScore;
-    }
-
     snakeArr = [{ x: 13, y: 15 }];
     musicSound.play();
     score = 0;
-    scoreBox.innerText = "Score: " + score;
   }
   // If you have eaten the food, increment the score and regenerate the food
   if (snakeArr[0].y === food.y && snakeArr[0].x === food.x) {
@@ -138,38 +130,3 @@ window.addEventListener("keydown", (e) => {
       break;
   }
 });
-// Function to handle touch move events
-function handleTouchMove(event) {
-  const touchX = event.touches[0].clientX;
-  const touchY = event.touches[0].clientY;
-
-  const deltaX = touchX - snakeArr[0].x * gridSize; // gridSize is the size of each grid cell
-  const deltaY = touchY - snakeArr[0].y * gridSize;
-
-  if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    // Horizontal swipe
-    if (deltaX > 0) {
-      // Swipe right
-      inputDir.x = 1;
-      inputDir.y = 0;
-    } else {
-      // Swipe left
-      inputDir.x = -1;
-      inputDir.y = 0;
-    }
-  } else {
-    // Vertical swipe
-    if (deltaY > 0) {
-      // Swipe down
-      inputDir.x = 0;
-      inputDir.y = 1;
-    } else {
-      // Swipe up
-      inputDir.x = 0;
-      inputDir.y = -1;
-    }
-  }
-}
-
-// Add touch move event listener
-window.addEventListener("touchmove", handleTouchMove);
